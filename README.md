@@ -36,3 +36,32 @@ Install the required packages via `pip`:
 ```bash
 pip install pymupdf paddleocr transformers
 ```
+
+## Usage
+
+### OCR + Zephyr-7B Pipeline:
+1. Load PDF invoices and extract key fields using PaddleOCR.
+2. Use Zephyr-7B to interpret and structure the data.
+3. Store the results in JSON format.
+
+### LayoutLM Method:
+1. Fine-tune the LayoutLM model on annotated invoice data.
+2. Use the model to extract fields from complex invoices.
+
+Both methods are scalable, leveraging GPU acceleration for large datasets.
+
+## Architecture
+
+### OCR + LLM Pipeline:
+1. Text extraction using PaddleOCR (GPU-accelerated).
+2. Text analysis with the Zephyr-7B model.
+3. Confidence score-based trust determination.
+4. Data structuring in JSON format.
+
+### LayoutLM Approach:
+1. Fine-tune LayoutLM on labeled data.
+2. Extract and categorize key invoice fields using spatial document understanding.
+
+## Error Handling
+- Low OCR confidence triggers manual review.
+- Non-standard layouts are flagged for further data annotation to improve model accuracy.
